@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "e82f67c7-5a4b-4369-89cc-b872f587a1ed",
+		"name": "Lab1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ad4d8646-f807-41f6-aa20-1306d678eb49",
+						"exec": [
+							"pm.test(\"API information about user\", function() {\r",
+							"  var jsonData = JSON.parse(responseBody); \r",
+							"  pm.expect(jsonData.login_id).to.eql(\"156799062\");\r",
+							"  pm.expect(jsonData.account_name).to.eql(\"Zered\");\r",
+							"  pm.expect(jsonData.first_name).to.eql(\"Дмитрий\");\r",
+							"  pm.expect(jsonData.last_name).to.eql(\"Сайханов\");\r",
+							"});\r",
+							"pm.test(\"Header test OK\", function() {\r",
+							"  pm.response.to.have.header(\"Connection\",\"keep-alive\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Time 500ms\", function() {\r",
+							"  pm.expect(pm.response.responseTime).to.be.below(500);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "552e6cef927544d38aa387fdfb8f8a50-us2",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "anything",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://us2.api.mailchimp.com/3.0",
+					"protocol": "https",
+					"host": [
+						"us2",
+						"api",
+						"mailchimp",
+						"com"
+					],
+					"path": [
+						"3.0"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
