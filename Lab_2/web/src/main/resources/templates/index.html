@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SHOP</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+</head>
+<body>
+<header class="page-header">
+    <div class="page-header-cook">
+        <div class="container"><span id="myBtn">City</span></div>
+    </div>
+    <div class="page-header__navbar">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/img/icon-3.png" alt="site logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/home-with-session">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Products
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Payment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Shopping</a>
+                        </li>
+                    </ul>
+                    <a class="nav-link" href="/">
+
+                    <button class="btn btn-outline-success1 my-2 my-sm-0 page-header__cart-btn" type="submit"><i
+                            class="fas fa-shopping-cart" aria-hidden="true"></i><span id="cart-counter"
+                                                                                      class="page-header__cart-counter">4235</span>
+                    </button>
+                    </a>
+                </div>
+
+            </nav>
+
+        </div>
+    </div>
+</header>
+<div class="container wrapper">
+    <div class="row">
+        <main class="col-lg-12">
+            <div class="row page-title page-title__header">
+                <div class="col-md-8"></div>
+                <div class="col-md-2">
+                    <select name="filter" id="fileter_category" class="page-title__filter">
+                        <option hidden>Sort</option>
+                        <option value="prise">sort by prise</option>
+                        <option value="name">sort by name</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select name="filter" id="fileter_sort" class="page-title__filter">
+                        <option hidden>category</option>
+                        <option value="Apple">Iphone</option>
+                        <option value="Sumsung">Sumsung</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row page-content content-grid" id="ContElement">
+                <div class="col-md-3 content-item" th:each="product, state : ${products}">
+                    <div class="item-wrapper">
+                        <div class="item-image">
+                            <img class="blocktext" th:src="${product.prevImage}" alt="">
+                        </div>
+                        <div class="container-fluid">
+                            <h4 th:text="${product.manufacturer1}" class="title"/>
+                            <div class="item-characteristics">
+                                Производитель: <span th:text="${product.manufacturer}"></span>
+
+                            </div>
+                            <div class="item-characteristics">
+                                Город: <span th:text="${product.city}"></span>
+
+                            </div>
+                            <div class="item-characteristics">
+                                Цвет: <span th:text="${product.color}">123</span>
+                            </div>
+                            <div class="item-actions row">
+                                <div class="item-price col-md-7"><span th:text="${product.price}"></span>$</div>
+
+                                <button class="btn btn-block btn-outline-success my-2 my-sm-0 item-actions__cart col-md-5"
+                                        th:id="${product.id}">
+                                    <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 page-footer__copyright">
+                <span>@ Copyright 2020</span>
+            </div>
+        </div>
+    </div>
+</footer>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="col-sm-11">
+                <h2>Select city</h2>
+            </div>
+            <div class="col-sm-1">
+                <span class="close">&times;</span>
+            </div>
+        </div>
+        <div class="modal-body">
+            <select class="select-model" size="5" id="filter-city">
+                <option value="Moscov">Moscov</option>
+                <option value="Perm">Perm</option>
+                <option value="Kazan">Kazan</option>
+                <option value="Chelny">Chelny</option>
+                <option value="Vladivostok">Vladivostok</option>
+            </select>
+        </div>
+    </div>
+</div>
+</body>
+</html>

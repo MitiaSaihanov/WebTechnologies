@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SHOP</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/basket.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <style>
+   .span {
+    padding-left:68px;
+   }
+  </style>
+</head>
+<body>
+<div class="container wrapper" id="cont">
+    <div class="row">
+        <main class="col-lg-12">
+            <div class="row page-content content-grid" id="ContElement">
+                <div class="row col-md-8">
+                    <div class="content-item col-md-12" th:each="product, state : ${products}">
+                        <div class=" item-wrapper">
+                            <div class="container-fluid ">
+                                <div class="row">
+                                    <div class="item-image col-md-4">
+                                        <img class="blocktext" th:src="${product.prevImage}" alt="">
+                                    </div>
+                                    <div class=" col-md-8 padding-tb">
+                                        <h4 th:text="${product.manufacturer1}" class="title"/>
+
+                                        <div class="item-characteristics">
+                                            Производитель: <span th:text="${product.manufacturer}"></span>
+
+                                        </div>
+                                        <div class="item-characteristics">
+                                            Город: <span th:text="${product.city}"></span>
+
+                                        </div>
+                                        <div class="item-characteristics">
+                                            Цвет: <span th:text="${product.color}">123</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item-actions row">
+                                    <div class="item-price col-md-8">
+                                        <span class="span"  th:text="${product.price}"></span>$</div>
+                                    <div class="col-md-4">
+                                        <button class="deletbutton" th:id="${product.id}">Удалить</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-md-4">
+                    <div class="card-container item-wrapper">
+                        <h2>Сумма заказа</h2>
+                        <div class=" col-md-12 layer">Стоимость <span th:text="${totatPrise}"> </span>$</div>
+                        <button class="cellbutton" id="Cell">Купить товар</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

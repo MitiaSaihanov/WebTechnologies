@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<div class="row page-content content-grid">
+    <div class="col-md-3 content-item" th:each="product : ${products}">
+        <div class="item-wrapper">
+            <div class="item-image">
+                <img class="blocktext" th:src="${product.prevImage}" alt="">
+            </div>
+            <div class="container-fluid">
+                <h4 th:text="${product.manufacturer1}" class="title"/>
+                <div class="item-characteristics">
+                    Тип: <span th:text="${product.manufacturer}"></span>
+
+                </div>
+                <div class="item-characteristics">
+                    Город: <span th:text="${product.city}"></span>
+
+                </div>
+                <div class="item-characteristics">
+                    Цвет: <span th:text="${product.color}">123</span>
+                </div>
+                <div class="item-actions row">
+                    <div class="item-price col-md-7"><span th:text="${product.price}"></span>$</div>
+
+                    <button class="btn btn-block btn-outline-success my-2 my-sm-0 item-actions__cart col-md-5">
+                        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
