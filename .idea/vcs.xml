@@ -3,5 +3,6 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/SpringMvc/web" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/react-frontend" vcs="Git" />
   </component>
 </project>
